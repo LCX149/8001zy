@@ -411,8 +411,8 @@ function combatDetail(invitePin) {
     headers.Cookie = cookie;
     headers.LKYLToken = $.LKYLToken;
     let opt = {
-      // url: "//jdjoy.jd.com/common/pet/getPetTaskConfig?reqSource=h5",
-      url: `//draw.jdfcloud.com/common/pet/combat/detail/v2?help=true&inviterPin=${encodeURI(invitePin)}&reqSource=h5`,
+      // url: "//1jdjoy.jd.com/common/pet/getPetTaskConfig?reqSource=h5",
+      url: `//1draw.jdfcloud.com/common/pet/combat/detail/v2?help=true&inviterPin=${encodeURI(invitePin)}&reqSource=h5`,
       method: "GET",
       data: {},
       credentials: "include",
