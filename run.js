@@ -372,8 +372,8 @@ function combatHelp(friendPin) {
     headers.Cookie = cookie;
     headers.LKYLToken = $.LKYLToken;
     let opt = {
-      // url: "//jdjoy.jd.com/common/pet/getPetTaskConfig?reqSource=h5",
-      url: `//draw.jdfcloud.com/common/pet/combat/help?friendPin=${encodeURI(friendPin)}&reqSource=h5`,
+      // url: "//1jdjoy.jd.com/common/pet/getPetTaskConfig?reqSource=h5",
+      url: `//1draw.jdfcloud.com/common/pet/combat/help?friendPin=${encodeURI(friendPin)}&reqSource=h5`,
       method: "GET",
       data: {},
       credentials: "include",
