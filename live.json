@@ -1,5 +1,3 @@
-
-const JD_API_HOST = 'https://api.m.jd.com/api';
 let ids = {
    '0': 'RRA2v2Lh5mtxYnC4j6VHrjoaDz7crQK',
   '9': 'RRA2v2Lh5mtxYnC4j6VHrjoaDz7crQK',
