@@ -330,7 +330,7 @@ echo "1 8-23$(date "+ %-d %-m") * jtask hby.js now"  >>  /jd/config/crontab.list
 
 echo "添加当天的红包雨定时任务完成"
 
-echo "顺便运行红包雨"
+echo "运行红包雨"
 
 jtask hby now 
 #> /dev/null 
