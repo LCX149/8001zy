@@ -118,9 +118,6 @@ input_container_name() {
 }
 input_container_name
 
-exho "请登录docker"
-docker login
-
 
 #配置已经创建完成，开始执行
 
@@ -162,23 +159,21 @@ if [ $INSTALL_WATCH = true ]; then
     containrrr/watchtower
 fi
 
-log "4.下面列出所有容器"
-docker ps
 
 log "5.安装已经完成。"
 
 echo "安装zsh"
-echo y|sudo apt-get install zsh
+yes | sudo apt-get install zsh
 
 echo "安装ohmyzsh"
-echo y|sh -c "$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)"
+yes | sh -c "$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)"
 echo "ohmyzsh安装完成"
 
 echo "安装zsh-auto"
 git clone https://gitee.com/han8gui/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "完成"
 
-sed -i 's/plugins=(git/plugins=(git zsh-autosuggestions /g' ~/.zshrc
+sed -i 's/plugins=(git/plugins=(git zsh-autosuggestions/g' ~/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="random"/g' ~/.zshrc
 sed -i "15i alias i+sen='sudo chattr +i /var/lib/docker/overlay2/jdthlj/merged/jd/scripts/sendNotify.js '" ~/.zshrc
 sed -i "15i alias i-sen='sudo chattr -i /var/lib/docker/overlay2/jdthlj/merged/jd/scripts/sendNotify.js '" ~/.zshrc
@@ -196,6 +191,9 @@ sed -i "15i  export jdthrq=" ~/.zshrc
 
 source ~/.zshrc
 echo "配置zsh-auto完成"
+
+log "4.下面列出所有容器"
+docker ps
 
 echo "自行下载红包雨wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh"
 
