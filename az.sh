@@ -14,7 +14,6 @@ DOCKER_IMG_NAME="nevinee/jd"
 JD_PATH=""
 SHELL_FOLDER=$(pwd)
 CONTAINER_NAME=""
-CONTAINER_NAME1=""
 CONFIG_PATH=""
 LOG_PATH=""
 TAG="v4-bot"
@@ -123,20 +122,6 @@ exho "请登录docker"
 docker login
 
 
-input_container_name1() {
-    echo -n -e "\e[33m三.请输入要创建的ck容器名称[默认为：ck]->\e[0m"
-    read container_name1
-    if [ -z "$container_name1" ]; then
-        CONTAINER_NAME1="ck"
-    else
-        CONTAINER_NAME1=$container_name1
-    fi
-    check_container_name
-}
-input_container_name
-
-
-
 #配置已经创建完成，开始执行
 
 log "1.开始创建配置文件目录"
@@ -167,18 +152,7 @@ docker run -dit \
     --restart always \
     --network bridge \
     $DOCKER_IMG_NAME:$TAG
- 
-log "3.开始创建ck容器并执行,若出现Unable to find image请耐心等待"
-docker run -dit \
-    -v $CONFIG_PATH:/jd/config \
-    --name $CONTAINER_NAME1 \
-    --hostname $CONTAINER_NAME1 \
-    -e ENABLE_TG_BOT=true \
-    -e ENABLE_WEB_PANEL=true \
-    -p 8521:5678 \
-    --restart always \
-    --network bridge \
-    lcx149/mbgl:ck1
+
 
 if [ $INSTALL_WATCH = true ]; then
     log "3.1.开始创建容器并执行"
@@ -187,10 +161,6 @@ if [ $INSTALL_WATCH = true ]; then
     -v /var/run/docker.sock:/var/run/docker.sock \
     containrrr/watchtower
 fi
-
-echo "启动面板"
-docker exec -it $CONTAINER_NAME1 pm2 start /jd/panel/server.js
-
 
 log "4.下面列出所有容器"
 docker ps
@@ -218,7 +188,6 @@ sed -i "15i alias jup='docker exec -it jdthrq jup'" ~/.zshrc
 sed -i "15i alias i+jshare='sudo chattr +i /var/lib/docker/overlay2/jdthlj/merged/jd/jshare.sh'" ~/.zshrc
 sed -i "15i alias i-jshare='sudo chattr -i /var/lib/docker/overlay2/jdthlj/merged/jd/jshare.sh'" ~/.zshrc
 sed -i "15i alias mb='docker exec -it jdthrq pm2 start /jd/panel/server.js'" ~/.zshrc
-sed -i "15i alias ckmb='docker exec -it $CONTAINER_NAME1 pm2 start 0'" ~/.zshrc
 sed -i "15i alias hby='UpMachine(){ docker exec -it jdthrq bash /jd/hby.sh $1;};UpMachine'" ~/.zshrc
 sed -i 's/jdthlj/"$jdthlj"/g' ~/.zshrc
 sed -i 's/jdthrq/"$jdthrq"/g' ~/.zshrc
@@ -228,6 +197,5 @@ sed -i "15i  export jdthrq=" ~/.zshrc
 source ~/.zshrc
 echo "配置zsh-auto完成"
 
-echo "运行完毕，ck面板登录地址：ip:8521"
 echo "自行下载红包雨wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh"
 
