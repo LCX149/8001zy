@@ -150,6 +150,10 @@ docker run -dit \
     --network bridge \
     $DOCKER_IMG_NAME:$TAG
 
+docker inspect $CONTAINER_NAME > 98544.txt
+jdrqlj=$(cat 98544.txt |grep -m1 "MergedDir")
+jdrqlj1="${jdrqlj#*overlay2/}"
+jdrqlj2="${jdrqlj1%/merged*}"
 
 if [ $INSTALL_WATCH = true ]; then
     log "3.1.开始创建容器并执行"
@@ -186,14 +190,17 @@ sed -i "15i alias mb='docker exec -it jdthrq pm2 start /jd/panel/server.js'" ~/.
 sed -i "15i alias hby='UpMachine(){ docker exec -it jdthrq bash /jd/hby.sh $1;};UpMachine'" ~/.zshrc
 sed -i 's/jdthlj/"$jdthlj"/g' ~/.zshrc
 sed -i 's/jdthrq/"$jdthrq"/g' ~/.zshrc
-sed -i "15i  export jdthlj=" ~/.zshrc
-sed -i "15i  export jdthrq=" ~/.zshrc
+sed -i "15i  export jdthlj=$jdrqlj2" ~/.zshrc
+sed -i "15i  export jdthrq=$CONTAINER_NAME" ~/.zshrc
 
 source ~/.zshrc
 echo "配置zsh-auto完成"
 
+rm -rf 98544.txt
+
 log "4.下面列出所有容器"
 docker ps
 
-echo "自行下载红包雨wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh"
+wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
+echo "红包雨下载完毕"
 
