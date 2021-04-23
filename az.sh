@@ -10,7 +10,7 @@ echo "
                                                                                                   
 "
 echo "安装即将开始！"
-sleep 3000
+sleep 5
 
 DOCKER_IMG_NAME="nevinee/jd"
 JD_PATH=""
@@ -72,7 +72,7 @@ docker_install() {
 docker_install
 warn "注意如果你什么都不清楚，建议所有选项都直接回车，使用默认选择！！！"
 #配置文件目录
-echo -n -e "\e[33m一.请输入配置文件保存的绝对路径,直接回车为当前目录:\e[0m"
+echo -n -e "\e[33m一.请输入配置文件保存的路径名/home/*,直接回车为当前目录:\e[0m"
 read jd_path
 JD_PATH=$jd_path
 if [ -z "$jd_path" ]; then
@@ -165,19 +165,23 @@ if [ $INSTALL_WATCH = true ]; then
     containrrr/watchtower
 fi
 
+echo "准备安装zsh"
+sleep 5
 
-log "5.安装已经完成。"
 
 echo "安装zsh"
 yes | sudo apt-get install zsh
+sleep 5
 
 echo "安装ohmyzsh"
 yes | sh -c "$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)"
 echo "ohmyzsh安装完成"
+sleep 5
 
 echo "安装zsh-auto"
 git clone https://gitee.com/han8gui/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "完成"
+sleep 5
 
 sed -i 's/plugins=(git/plugins=(git zsh-autosuggestions/g' ~/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="random"/g' ~/.zshrc
@@ -197,12 +201,43 @@ sed -i "15i  export jdthrq=$CONTAINER_NAME" ~/.zshrc
 
 source ~/.zshrc
 echo "配置zsh-auto完成"
-
 rm -rf 98544.txt
+
+#恰饭
+if [ ! -f "$CONFIG_PATH/config.sh" ]; then
+    docker cp $CONTAINER_NAME:/jd/sample/config.sh.sample $CONFIG_PATH/config.sh
+    sed -i '$a\MyFruit1='cb15423161f145afab9c133a33c47eb6'' $CONFIG_PATH/config.sh
+    sed -i '$a\ForOtherFruit1="${MyFruit1}"' $CONFIG_PATH/config.sh
+    sed -i '$a\ForOtherFruit2="${MyFruit1}"' $CONFIG_PATH/config.sh
+    sed -i '$a\ForOtherFruit3="${MyFruit1}"' $CONFIG_PATH/config.sh
+    sed -i '$a\ForOtherFruit4="${MyFruit1}"' $CONFIG_PATH/config.sh
+    sed -i '$a\ForOtherFruit5="${MyFruit1}"' $CONFIG_PATH/config.sh
+    sed -i '$a\MyCash1="eU9YM6TvGal5pQuTrApz"' $CONFIG_PATH/config.sh
+    sed -i '$a\MyCash2="eU9Ya-3mb69y8GyDwnIQ1w"' $CONFIG_PATH/config.sh
+    sed -i '$a\MyCash3="eU9Yabm0N6gkpG_WyHoWgw"' $CONFIG_PATH/config.sh
+    sed -i '$a\MyCash4="eU9YaeWzNf5y-T2HnXMR0A"' $CONFIG_PATH/config.sh
+    sed -i '$a\MyCash5="eU9Yab3kZagu8zuEnyEVhQ"' $CONFIG_PATH/config.sh
+    sed -i '$a\ForOtherCash1="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+     sed -i '$a\ForOtherCash2="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+      sed -i '$a\ForOtherCash3="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+       sed -i '$a\ForOtherCash4="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+        sed -i '$a\ForOtherCash5="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+         sed -i '$a\ForOtherCash6="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+          sed -i '$a\ForOtherCash7="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+           sed -i '$a\ForOtherCash8="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+            sed -i '$a\ForOtherCash9="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+             sed -i '$a\ForOtherCash10="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+              sed -i '$a\ForOtherCash11="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+               sed -i '$a\ForOtherCash12="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
+    sed -i 's/AutoHelpOther=""/AutoHelpOther="false"/g' $CONFIG_PATH/config.sh
+    
+fi
 
 log "4.下面列出所有容器"
 docker ps
 
 wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
 echo "红包雨下载完毕"
+echo "打开/home/$JD_PATH/config/config.sh，自行填写cookie即可"
+echo "安装已经完成，by:lcx149"
 
