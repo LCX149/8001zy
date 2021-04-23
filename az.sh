@@ -9,6 +9,8 @@ echo "
 \______|    \/               \/     \/     \/     \/
                                                                                                   
 "
+echo "安装即将开始！"
+sleep 3000
 
 DOCKER_IMG_NAME="nevinee/jd"
 JD_PATH=""
