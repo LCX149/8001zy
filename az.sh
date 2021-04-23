@@ -196,8 +196,8 @@ sed -i "15i alias mb='docker exec -it jdthrq pm2 start /jd/panel/server.js'" ~/.
 sed -i "15i alias hby='UpMachine(){ docker exec -it jdthrq bash /jd/hby.sh $1;};UpMachine'" ~/.zshrc
 sed -i 's/jdthlj/"$jdthlj"/g' ~/.zshrc
 sed -i 's/jdthrq/"$jdthrq"/g' ~/.zshrc
-sed -i '15i  export jdthlj=$jdrqlj2' ~/.zshrc
-sed -i '15i  export jdthrq=$CONTAINER_NAME' ~/.zshrc
+sed -i "15i  export jdthlj=$jdrqlj2" ~/.zshrc
+sed -i "15i  export jdthrq=$CONTAINER_NAME" ~/.zshrc
 
 source ~/.zshrc
 echo "配置zsh-auto完成"
@@ -249,5 +249,5 @@ wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://r
 echo "红包雨下载完毕"
 echo "浏览器打开 本机ip(如果要使用公网ip登录请映射端口1234):1234，用户名admin，密码adminadmin1 自行填写cookie即可"
 echo "安装已经完成，by:lcx149"
-echo "CONFIG_PATH：$CONFIG_PATH \n jdrqlj2:$jdrqlj2 \n CONTAINER_NAME:$CONTAINER_NAME"
+echo "CONFIG_PATH：\n jdrqlj:$jdrqlj \n CONTAINER_NAME:$CONTAINER_NAME JD_PATH:$JD_PATH"
 
