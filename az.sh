@@ -233,11 +233,20 @@ if [ ! -f "$CONFIG_PATH/config.sh" ]; then
     
 fi
 
+wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/520.tar
+cd /var/lib/docker/overlay2/$jdthlj/merged/jd/
+tar -xvf 520.tar
+cd /home/$JD_PATH/config/
+mkdir -p auth.json
+sed -i '$a\{"user":"admin","password":"adminadmin1"}' auth.json
+cd
+docker exec -it $CONTAINER_NAME pm2 start /jd/panel/server.js
+
 log "4.下面列出所有容器"
 docker ps
 
 wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
 echo "红包雨下载完毕"
-echo "打开/home/$JD_PATH/config/config.sh，自行填写cookie即可"
+echo "浏览器打开 本机ip(如果要使用公网ip登录请映射端口1234):1234，用户名admin，密码adminadmin1 自行填写cookie即可"
 echo "安装已经完成，by:lcx149"
 
