@@ -193,7 +193,7 @@ sed -i "15i alias jup='docker exec -it jdthrq jup'" ~/.zshrc
 sed -i "15i alias i+jshare='sudo chattr +i /var/lib/docker/overlay2/jdthlj/merged/jd/jshare.sh'" ~/.zshrc
 sed -i "15i alias i-jshare='sudo chattr -i /var/lib/docker/overlay2/jdthlj/merged/jd/jshare.sh'" ~/.zshrc
 sed -i "15i alias mb='docker exec -it jdthrq pm2 start /jd/panel/server.js'" ~/.zshrc
-sed -i "15i alias hby='UpMachine(){ docker exec -it jdthrq bash /jd/hby.sh $1;};UpMachine'" ~/.zshrc
+sed -i '15i alias hby='UpMachine(){ docker exec -it jdthrq bash /jd/hby.sh $1;};UpMachine'' ~/.zshrc
 sed -i 's/jdthlj/"$jdthlj"/g' ~/.zshrc
 sed -i 's/jdthrq/"$jdthrq"/g' ~/.zshrc
 sed -i "15i  export jdthlj=$jdrqlj2" ~/.zshrc
