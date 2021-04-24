@@ -203,51 +203,9 @@ source ~/.zshrc
 echo "配置zsh-auto完成"
 rm -rf 98544.txt
 
-#恰饭
-if [ ! -f "$CONFIG_PATH/config.sh" ]; then
-    docker cp $CONTAINER_NAME:/jd/sample/config.sh.sample $CONFIG_PATH/config.sh
-    sed -i '$a\MyFruit1='cb15423161f145afab9c133a33c47eb6'' $CONFIG_PATH/config.sh
-    sed -i '$a\ForOtherFruit1="${MyFruit1}"' $CONFIG_PATH/config.sh
-    sed -i '$a\ForOtherFruit2="${MyFruit1}"' $CONFIG_PATH/config.sh
-    sed -i '$a\ForOtherFruit3="${MyFruit1}"' $CONFIG_PATH/config.sh
-    sed -i '$a\ForOtherFruit4="${MyFruit1}"' $CONFIG_PATH/config.sh
-    sed -i '$a\ForOtherFruit5="${MyFruit1}"' $CONFIG_PATH/config.sh
-    sed -i '$a\MyCash1="eU9YM6TvGal5pQuTrApz"' $CONFIG_PATH/config.sh
-    sed -i '$a\MyCash2="eU9Ya-3mb69y8GyDwnIQ1w"' $CONFIG_PATH/config.sh
-    sed -i '$a\MyCash3="eU9Yabm0N6gkpG_WyHoWgw"' $CONFIG_PATH/config.sh
-    sed -i '$a\MyCash4="eU9YaeWzNf5y-T2HnXMR0A"' $CONFIG_PATH/config.sh
-    sed -i '$a\MyCash5="eU9Yab3kZagu8zuEnyEVhQ"' $CONFIG_PATH/config.sh
-    sed -i '$a\ForOtherCash1="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-     sed -i '$a\ForOtherCash2="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-      sed -i '$a\ForOtherCash3="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-       sed -i '$a\ForOtherCash4="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-        sed -i '$a\ForOtherCash5="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-         sed -i '$a\ForOtherCash6="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-          sed -i '$a\ForOtherCash7="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-           sed -i '$a\ForOtherCash8="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-            sed -i '$a\ForOtherCash9="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-             sed -i '$a\ForOtherCash10="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-              sed -i '$a\ForOtherCash11="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-               sed -i '$a\ForOtherCash12="${MyCash1}@${MyCash2}@${MyCash3}@${MyCash4}@${MyCash5}"' $CONFIG_PATH/config.sh
-    sed -i 's/AutoHelpOther=""/AutoHelpOther="false"/g' $CONFIG_PATH/config.sh
-    
-fi
-
-wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/520.tar
-cd /var/lib/docker/overlay2/$jdthlj/merged/jd/
-tar -xvf 520.tar
-cd /home/$JD_PATH/config/
-mkdir -p auth.json
-sed -i '$a\{"user":"admin","password":"adminadmin1"}' auth.json
-cd
-docker exec -it $CONTAINER_NAME pm2 start /jd/panel/server.js
-
 log "4.下面列出所有容器"
 docker ps
 
-wget -P /var/lib/docker/overlay2/$jdthlj/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
+wget -P /var/lib/docker/overlay2/$jdthlj2/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
 echo "红包雨下载完毕"
-echo "浏览器打开 本机ip(如果要使用公网ip登录请映射端口1234):1234，用户名admin，密码adminadmin1 自行填写cookie即可"
 echo "安装已经完成，by:lcx149"
-echo "CONFIG_PATH：\n jdrqlj:$jdrqlj \n CONTAINER_NAME:$CONTAINER_NAME JD_PATH:$JD_PATH"
-
