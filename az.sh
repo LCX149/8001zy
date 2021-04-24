@@ -174,7 +174,7 @@ yes | sudo apt-get install zsh
 sleep 5
 
 echo "安装ohmyzsh"
-yes | sh -c '$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)'
+yes | sh -c "$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)"
 echo "ohmyzsh安装完成"
 sleep 5
 
@@ -206,6 +206,6 @@ rm -rf 98544.txt
 log "4.下面列出所有容器"
 docker ps
 
-wget -P /var/lib/docker/overlay2/$jdthlj2/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
+wget -P /var/lib/docker/overlay2/"$jdthlj2"/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
 echo "红包雨下载完毕"
 echo "安装已经完成，by:lcx149"
