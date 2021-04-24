@@ -174,7 +174,7 @@ yes | sudo apt-get install zsh
 sleep 5
 
 echo "安装ohmyzsh"
-sh -c "$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)"
+yes | sh -c "$(wget -O- https://gitee.com/shmhlsy/oh-my-zsh-install.sh/raw/master/install.sh)"
 echo "ohmyzsh安装完成"
 sleep 5
 
@@ -182,6 +182,8 @@ echo "安装zsh-auto"
 git clone https://gitee.com/han8gui/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "完成"
 sleep 5
+
+chsh -s /bin/zsh
 
 sed -i 's/plugins=(git/plugins=(git zsh-autosuggestions/g' ~/.zshrc
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="random"/g' ~/.zshrc
