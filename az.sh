@@ -204,7 +204,7 @@ sed -i "15i  export jdthrq=$CONTAINER_NAME" ~/.zshrc
 source ~/.zshrc
 echo "配置zsh-auto完成"
 rm -rf 98544.txt
-
+zsh
 log "4.下面列出所有容器"
 docker ps
 
