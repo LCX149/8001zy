@@ -147,7 +147,7 @@ docker run -dit \
     --hostname $CONTAINER_NAME \
     -e ENABLE_TG_BOT=true \
     -e ENABLE_WEB_PANEL=true \
-    -p 1234:5678 \
+    -p 8864:5678 \
     --restart always \
     --network bridge \
     $DOCKER_IMG_NAME:$TAG
@@ -207,6 +207,8 @@ docker ps
 
 echo "下载红包雨"
 wget -P /var/lib/docker/overlay2/$jdrqlj2/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
+wget -P /var/lib/docker/overlay2/$jdrqlj2/merged/jd/scripts https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hbynew.js
+wget -P /var/lib/docker/overlay2/$jdrqlj2/merged/jd/scripts https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/bdhby.js
 echo "红包雨下载完毕"
 echo "安装已经完成，by:lcx149"
 chsh -s /bin/zsh
