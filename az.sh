@@ -12,13 +12,13 @@ echo "
 echo "安装即将开始！"
 sleep 5
 
-DOCKER_IMG_NAME="nevinee/jd"
+DOCKER_IMG_NAME="lcx149/bf"
 JD_PATH=""
 SHELL_FOLDER=$(pwd)
 CONTAINER_NAME=""
 CONFIG_PATH=""
 LOG_PATH=""
-TAG="v4-bot"
+TAG="00"
 
 HAS_IMAGE=false
 PULL_IMAGE=true
@@ -206,10 +206,9 @@ log "4.下面列出所有容器"
 docker ps
 
 echo "下载红包雨"
-wget -P /var/lib/docker/overlay2/$jdrqlj2/merged/jd https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hby.sh
 wget -P /var/lib/docker/overlay2/$jdrqlj2/merged/jd/scripts https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/hbynew.js
 wget -P /var/lib/docker/overlay2/$jdrqlj2/merged/jd/scripts https://ghproxy.com/https://raw.githubusercontent.com/LCX149/8001zy/main/bdhby.js
-echo "红包雨下载完毕"
+echo "红包雨下载完毕,请自行设置定时任务"
 echo "安装已经完成，by:lcx149"
 chsh -s /bin/zsh
 zsh
