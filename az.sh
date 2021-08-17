@@ -179,7 +179,7 @@ echo "ohmyzsh安装完成"
 sleep 5
 
 echo "安装zsh-auto"
-git clone https://gitee.com/han8gui/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "完成"
 sleep 5
 
