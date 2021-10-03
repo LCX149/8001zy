@@ -18,7 +18,7 @@ SHELL_FOLDER=$(pwd)
 CONTAINER_NAME=""
 CONFIG_PATH=""
 LOG_PATH=""
-TAG="00"
+TAG="ql_v3"
 
 HAS_IMAGE=false
 PULL_IMAGE=true
@@ -80,6 +80,7 @@ if [ -z "$jd_path" ]; then
 fi
 CONFIG_PATH=/home/$JD_PATH/config
 LOG_PATH=/home/$JD_PATH/log
+SCRIPTS_PATH=/home/$JD_PATH/scripts
 
 #检测镜像是否存在
 if [ ! -z "$(docker images -q $DOCKER_IMG_NAME:$TAG 2> /dev/null)" ]; then
@@ -123,9 +124,9 @@ input_container_name
 
 #配置已经创建完成，开始执行
 
-log "1.开始创建配置文件目录"
-mkdir -p $CONFIG_PATH
-mkdir -p $LOG_PATH
+#log "1.开始创建配置文件目录"
+#mkdir -p $CONFIG_PATH
+#mkdir -p $LOG_PATH
 
 
 if [ $HAS_IMAGE = true ] && [ $PULL_IMAGE = true ]; then
@@ -141,13 +142,13 @@ fi
 
 log "3.开始创建容器并执行,若出现Unable to find image请耐心等待"
 docker run -dit \
-    -v $CONFIG_PATH:/jd/config \
-    -v $LOG_PATH:/jd/log \
+    -v $CONFIG_PATH:/ql/config \
+    -v $LOG_PATH:/ql/log \
+    -v $SCRIPTS_PATH:/ql/scripts \
     --name $CONTAINER_NAME \
     --hostname $CONTAINER_NAME \
-    -e ENABLE_TG_BOT=true \
-    -e ENABLE_WEB_PANEL=true \
-    -p 8864:5678 \
+    -p 13570:5700 \
+    -m 1500M \
     --restart always \
     --network bridge \
     $DOCKER_IMG_NAME:$TAG
