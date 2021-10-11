@@ -180,7 +180,7 @@ docker run -dit \
     --name $CONTAINER_NAME \
     --hostname $CONTAINER_NAME \
     -p 13570:5700 \
-    -m 1524M \
+    -m 1624M \
     --restart always \
     --network bridge \
     $DOCKER_IMG_NAME:$TAG
